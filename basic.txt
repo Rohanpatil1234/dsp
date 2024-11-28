@@ -1,0 +1,445 @@
+%{
+% Q1 Print c
+a=2;
+b=3;
+c=a+b;
+disp(c);
+%}
+
+%{
+%Q2
+a=2;
+b=a;
+disp(b);
+%}
+
+%{
+%Q3
+ a = 3;
+ b = 9;
+ c = 2*a+b^2-a*b+b/a-10;
+ disp(c);
+%}
+
+%{
+%Q4
+ a = 3;
+ a = a+1;
+ disp(a);
+%}
+
+%{
+%Q5
+ fprintf('Hello');
+%}
+
+%{
+%Q6
+ a = 3;
+ b = a*a;
+ c = a*a*a;
+ d = sqrt(a);
+ fprintf('%4u square equals %4u \r', a, b)
+ fprintf('%4u cube equals %4u \r', a, c)
+ fprintf('The square root of %2u is %6.4f \r', a, d)
+%}
+
+%{
+%Q7
+ a = [3  6  7];
+ b = [1  9  4];
+ c = a + b;
+ disp(c);
+%}
+
+%{
+%Q8
+a = [3  6  7];
+ b = [1  9  4  5];
+ c = a(2) + b(4);
+ disp(c);
+%}
+
+%{
+%Q9
+ % This program demonstrates how to "comment out" 
+% a segment of code
+ %
+ A = 3;
+ B = A*A;
+ % 
+% B = 2*B   <--- This statement is not executed 
+%
+ C = A+B;
+ C
+%}
+
+%{
+% Ex.10
+summation1 = 1 + 3 + 5 + 7 ...
+    + 9 + 11
+%}
+%{
+% Ex. 11 "Clear" a variable
+c1 = 3;
+c2 = c1 + 5;
+clear c1
+
+
+% Ex. 11 Intrinsic math functions and constants
+x = pi;
+y = sin(pi / 2);
+z = exp(-sin(pi / 2));
+
+
+% Ex. 12 Naming a variable
+ ASU = 10;
+ asu = 5;
+ MAE_384 = 20;
+%}
+
+% Ex. 13 Making a quick plot
+x = 0:0.1:20; 
+y = sin(x);   
+plot(x, y)   
+
+% Ex. 14 Loop: Using for command
+b = 3;
+for k = 1:5
+    b;
+end
+%{
+% Ex. 15 For loop: Utility of the dummy index
+b = 3;
+for k = 1:5
+    b^k
+end
+
+
+% Ex. 16 For loop: More on the dummy index
+sum1 = 0;
+for k = 1:9
+    sum1 = sum1 + k;
+end
+sum1
+
+
+% Ex. 17 For loop: More on the dummy index
+sum1 = 0;
+for k = 1:2:9
+    sum1 = sum1 + k;
+end
+sum1
+
+% Ex. 18 Treatment of array within a loop
+b = [3 8 9 4 7 5];
+sum1 = 0;
+for k = 1:4
+    sum1 = sum1 + b(k);
+end
+sum1
+
+% Ex. 19 Treatment of array within a loop
+b = [3 8 9 4 7 5];
+sum1 = 0;
+for k = 1:2:5
+    sum1 = sum1 + b(k);
+end
+sum1
+
+% Ex. 20 Double loop
+sum1 = 0;
+for n = 1:2
+    for m = 1:3
+        sum1 = sum1 + n * m;
+    end
+end
+sum1
+%}
+
+%{
+% Ex. 21
+for n = 1:2
+    for m = 1:3
+        fprintf('n = %3u  m = %3u \r', n, m)
+    end
+end
+%}
+
+%{
+% Ex. 22
+b = [2 5 7 4 9 8 3];
+c = [2 3 5 7];
+sum1 = 0;
+for k = 1:4
+    sum1 = sum1 + b(c(k));
+end
+sum1
+%}
+
+%{
+% Ex. 23
+num1 = 7;
+if (num1 > 5)
+    fprintf('%4u is greater than 5 \r', num1)
+else
+    fprintf('%4u is less than or equal to 5 \r', num1)
+end
+%}
+
+%{
+% Ex. 24
+num1 = 4;
+if (num1 >= 5)
+    fprintf('%4i is greater than or equal to 5 \r', num1)
+elseif (num1 > 1)
+    fprintf('%4i is less than 5 but greater than 1 \r', num1)
+elseif (num1 == 1)
+    fprintf('%4i equals 1 \r', num1)
+elseif (num1 > -3)
+    fprintf('%4i is less than 1 but greater than -3 \r', num1)
+else
+    fprintf('%4i is less than or equal to -3 \r', num1)
+end
+%}
+
+%{
+% Ex. 25
+nyear = 1975;
+if (mod(nyear, 400) == 0)
+    fprintf('%6u is a leap year', nyear)
+elseif (mod(nyear, 4) == 0) && (mod(nyear, 100) ~= 0) 
+    fprintf('%6u is a leap year', nyear)
+else
+    fprintf('%6u is not a leap year', nyear)
+end
+%}
+
+%{
+% Ex. 26
+sum1 = 0; 
+sum2 = 0;
+N = 9;
+for k = 1:N
+    sum1 = sum1 + k;
+    if (mod(k, 3) == 0)
+        sum2 = sum2 + k;
+    end
+end
+sum1
+sum2
+%}
+
+%{
+% Ex. 27
+x = 3;
+while (x < 100)
+    x = x * 3;
+end
+x
+%}
+
+%{
+% Ex. 28
+a = [2 12 25];
+b = [3 7 4];
+c = a + b
+%}
+
+%{
+% Ex. 29
+a = [3 4; 1 6];
+b = [5 2; 11 7];
+c = a + b
+%}
+
+%{
+% Ex. 30
+a = [3 5; 1 4];
+b = 2 * a
+%}
+
+
+%{
+% Ex. 31
+a = [2 3 5];
+b = [2 4 9];
+c = a .* b
+%}
+
+%{
+% Ex. 32
+a = [2 3; 1 4];
+b = [5 1; 7 2];
+c = a .* b
+%}
+
+%{
+% Ex. 33
+a = [2 3; 1 4];
+b = [5 1; 7 2];
+c = a * b
+%}
+
+%{
+% Ex. 34
+a = [2 3 5];
+b = sin(a)
+%}
+
+%{
+% Ex. 35
+a = [2 3 5];
+b = 2*a.^2 + 3*a + 4
+%}
+
+%{
+% Ex. 36
+a = [0:0.5:4];
+a
+%}
+
+%{
+% Ex. 37
+A = [3 5; 2 4];
+c = A(2,2) + A(1,2)
+%}
+
+%{
+% Ex. 38
+A = [3 5; 2 4];
+norm1 = 0;
+for m = 1:2
+    for n = 1:2
+        norm1 = norm1 + A(m,n)^2;
+    end
+end
+norm1 = sqrt(norm1)
+%}
+
+%{
+% Ex. 39
+A = [4 1 2; 0 3 1; 0 1 2];
+b = [17; 19; 13];
+x = inv(A) * b
+%}
+
+%{
+% Ex. 40
+A = [4 1 2; 0 3 1; 0 1 2];
+b = [17; 19; 13];
+x = A \ b
+%}
+
+%{
+% Ex. 41
+a = [0:0.5:5];
+b = 2*a.^2 + 3*a -5;
+plot(a,b)
+%}
+
+%{
+% Ex. 42
+a = [0:0.5:5];
+b = 2*a.^2 + 3*a -5;
+plot(a,b,'-or','MarkerFaceColor','g','LineWidth',2)
+xlabel('X'); ylabel('Y'); legend('Test','Location','NorthWest')
+%}
+
+%{
+% Ex. 43
+a = [0:0.5:5];
+b = 2*a.^2 + 3*a -5;
+c = 1.2*a.^2+4*a-3;
+hold on
+plot(a,b,'-or','MarkerFaceColor','g','LineWidth',2)
+plot(a,c,'--ok','MarkerFaceColor','c','LineWidth',2)
+xlabel('X'); ylabel('Y'); legend('Curve 1','Curve 2','Location','NorthWest')
+%}
+
+%{
+% Ex. 44
+a = [0:0.5:5];
+b = 2*a.^2 + 3*a -5;
+c = 1.2*a.^2+4*a-3;
+hold on
+plot(a,b,'or','MarkerFaceColor','g','LineWidth',2)
+plot(a,c,'ok','MarkerFaceColor','c','LineWidth',2)
+xlabel('X'); ylabel('Y'); legend('Curve 1','Curve 2','Location','NorthWest')
+%}
+
+%{
+% Ex. 45
+a = [0:0.5:5];
+b = 2*a.^2 + 3*a -5;
+c = 1.2*a.^2+4*a-3;
+subplot(1,2,1)
+plot(a,b,'-or','MarkerFaceColor','g','LineWidth',2)
+xlabel('X'); ylabel('Y'); legend('Curve ','Location','NorthWest')
+subplot(1,2,2)
+plot(a,c,'--ok','MarkerFaceColor','c','LineWidth',2)
+xlabel('X'); ylabel('Y'); legend('Curve 2','Location','NorthWest')
+%}
+
+%{
+% Ex. 46
+function outcome = myfunc1(x)
+outcome = 2*x^2 + 3*x + 7;
+end
+%}
+
+%{
+% Ex. 46 (mainprog1.m)
+for n = 1:5
+    x = n*0.1;
+    z = myfunc1(x);
+    fprintf('x = %4.2f  f(x) = %8.4f \r',x,z)
+end
+%}
+
+%{
+% Ex. 47
+function outcome = myfunc2(x,a,b,c)
+outcome = a*x^2 + b*x + c;
+end
+%}
+
+%{
+% Ex. 47 (mainprog2.m)
+for n = 1:5
+    x = n*0.1;
+    z = myfunc2(x,2,3,7);
+    fprintf('x = %4.2f  f(x) = %8.4f \r',x,z)
+end
+%}
+
+%{
+% Ex. 48
+fID1 = fopen('myoutput1.txt','w');
+for n = 1:4
+    b1 = n ; b2 = n^2 ; b3 = n^3;
+    fprintf(fID1,'%7u %7u %7u \r',b1,b2,b3);
+end
+fclose(fID1);
+%}
+
+%{
+% Ex. 49
+fID1 = fopen('myoutput1.txt','r');
+for n = 1:4
+    b = fscanf(fID1,'%7u %7u %7u \r',3);
+    btotal = b(1)+b(2)+b(3);
+    fprintf('%7u + %7u + %7u = %7u \r', b(1), b(2), b(3), btotal)
+end
+fclose(fID1);
+%}
+
+%{
+% Ex. 50
+num1 = input('Enter your age');
+if (num1 > 17)
+   fprintf('You are eligible to vote')
+else
+   fprintf('You are not eligible to vote')
+end
+%}
