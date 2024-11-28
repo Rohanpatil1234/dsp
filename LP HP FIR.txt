@@ -1,0 +1,73 @@
+% Basic MATLAB code to implement Low-Pass, High-Pass, and FIR filters
+% All filters are designed using FIR (Finite Impulse Response) filters
+
+clear; clc;
+
+% --- Filter Design Parameters ---
+Fs = 1000;        % Sampling frequency (Hz)
+N = 50;           % Filter order (higher value = sharper cutoff)
+% Cutoff frequencies (in Hz)
+Fc_lp = 100;      % Low-pass cutoff frequency
+Fc_hp = 100;      % High-pass cutoff frequency
+Fc_bp = [50 150]; % Band-pass cutoff frequencies
+
+% --- Time Vector and Test Signal ---
+t = 0:1/Fs:1;     % 1 second time vector
+x = sin(2*pi*50*t) + sin(2*pi*200*t);  % Example signal (50Hz + 200Hz)
+
+% --- 1. Low-Pass Filter Design (FIR) ---
+lp_filter = fir1(N, Fc_lp/(Fs/2), 'low');  % Low-pass filter
+
+% --- 2. High-Pass Filter Design (FIR) ---
+hp_filter = fir1(N, Fc_hp/(Fs/2), 'high');  % High-pass filter
+
+% --- 3. Bandpass Filter Design (FIR) ---
+bp_filter = fir1(N, Fc_bp/(Fs/2), 'bandpass');  % Bandpass filter
+
+% --- Display Filter Frequency Responses ---
+% Plot frequency response of all three filters
+figure;
+subplot(3,1,1);
+fvtool(lp_filter, 1, 'Fs', Fs); title('Low-Pass Filter Frequency Response');
+
+subplot(3,1,2);
+fvtool(hp_filter, 1, 'Fs', Fs); title('High-Pass Filter Frequency Response');
+
+subplot(3,1,3);
+fvtool(bp_filter, 1, 'Fs', Fs); title('Bandpass Filter Frequency Response');
+
+% --- Apply Filters to the Signal ---
+y_lp = filter(lp_filter, 1, x);  % Apply low-pass filter
+y_hp = filter(hp_filter, 1, x);  % Apply high-pass filter
+y_bp = filter(bp_filter, 1, x);  % Apply bandpass filter
+
+% --- Plot the Original and Filtered Signals ---
+figure;
+
+% Original signal plot
+subplot(4, 1, 1);
+plot(t, x); 
+title('Original Signal (50Hz + 200Hz)');
+xlabel('Time (s)');
+ylabel('Amplitude');
+
+% Low-pass filtered signal plot
+subplot(4, 1, 2);
+plot(t, y_lp);
+title('Low-Pass Filtered Signal');
+xlabel('Time (s)');
+ylabel('Amplitude');
+
+% High-pass filtered signal plot
+subplot(4, 1, 3);
+plot(t, y_hp);
+title('High-Pass Filtered Signal');
+xlabel('Time (s)');
+ylabel('Amplitude');
+
+% Bandpass filtered signal plot
+subplot(4, 1, 4);
+plot(t, y_bp);
+title('Bandpass Filtered Signal');
+xlabel('Time (s)');
+ylabel('Amplitude');

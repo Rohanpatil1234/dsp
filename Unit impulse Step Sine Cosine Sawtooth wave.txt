@@ -1,0 +1,60 @@
+Lab-2 (Generation of Discrete time Sequences. Unit impulse Step Sine Cosine Sawtooth wave)
+% Define the length of the sequence
+n = -10:10; % Range of n from -10 to 10
+
+% Unit Impulse Sequence
+impulse = (n == 0); % Impulse at n = 0
+
+% Unit Step Sequence
+step = (n >= 0); % Step starts at n = 0
+
+% Sine Wave Sequence
+f = 0.1; % Frequency of the sine wave
+sine_wave = sin(2 * pi * f * n);
+
+% Cosine Wave Sequence
+cosine_wave = cos(2 * pi * f * n);
+
+% Sawtooth Wave Sequence
+sawtooth_wave = sawtooth(2 * pi * f * n);
+
+% Plotting the sequences
+figure;
+
+% Plot Unit Impulse Sequence
+subplot(3, 2, 1);
+stem(n, impulse, 'filled');
+title('Unit Impulse Sequence');
+xlabel('n');
+ylabel('Amplitude');
+
+% Plot Unit Step Sequence
+subplot(3, 2, 2);
+stem(n, step, 'filled');
+title('Unit Step Sequence');
+xlabel('n');
+ylabel('Amplitude');
+
+% Plot Sine Wave Sequence
+subplot(3, 2, 3);
+stem(n, sine_wave, 'filled');
+title('Sine Wave Sequence');
+xlabel('n');
+ylabel('Amplitude');
+
+% Plot Cosine Wave Sequence
+subplot(3, 2, 4);
+stem(n, cosine_wave, 'filled');
+title('Cosine Wave Sequence');
+xlabel('n');
+ylabel('Amplitude');
+
+% Plot Sawtooth Wave Sequence
+subplot(3, 2, 5);
+stem(n, sawtooth_wave, 'filled');
+title('Sawtooth Wave Sequence');
+xlabel('n');
+ylabel('Amplitude');
+
+% Adjust layout
+sgtitle('Discrete Time Sequences');

@@ -1,0 +1,59 @@
+% Simple implementation of Low-Pass, High-Pass FIR and IIR filters
+
+% Sampling frequency
+fs = 1000;  % Hz
+
+% Time vector for 1 second
+t = 0:1/fs:1;
+
+% Cutoff frequencies (in Hz)
+fc_low = 100;   % Low-pass cutoff
+fc_high = 200;  % High-pass cutoff
+
+% Normalize cutoff frequencies (Nyquist = fs/2)
+Wn_low = fc_low / (fs / 2);  
+Wn_high = fc_high / (fs / 2);  
+
+% Filter order (higher order = sharper cutoff)
+N = 50;
+
+% --- FIR Filters ---
+
+% Low-pass FIR filter design (using fir1)
+b_low_fir = fir1(N, Wn_low, 'low');
+b_high_fir = fir1(N, Wn_high, 'high');
+
+% --- IIR Filters ---
+
+% Low-pass IIR filter design (using butter)
+[b_low_iir, a_low_iir] = butter(4, Wn_low, 'low');   % 4th order low-pass IIR
+[b_high_iir, a_high_iir] = butter(4, Wn_high, 'high'); % 4th order high-pass IIR
+
+% Generate a noisy signal: combination of low and high frequency components
+x = cos(2*pi*50*t) + cos(2*pi*300*t) + randn(size(t));  % Signal with noise
+
+% Apply FIR filters to the signal
+y_low_fir = filter(b_low_fir, 1, x);   % Low-pass FIR filter output
+y_high_fir = filter(b_high_fir, 1, x); % High-pass FIR filter output
+
+% Apply IIR filters to the signal
+y_low_iir = filter(b_low_iir, a_low_iir, x);   % Low-pass IIR filter output
+y_high_iir = filter(b_high_iir, a_high_iir, x); % High-pass IIR filter output
+
+% Plot the original and filtered signals
+figure;
+
+subplot(3,2,1);
+plot(t, x); title('Original Signal (Noisy)');
+
+subplot(3,2,2);
+plot(t, y_low_fir); title('Low-Pass FIR Filtered Signal');
+
+subplot(3,2,3);
+plot(t, y_high_fir); title('High-Pass FIR Filtered Signal');
+
+subplot(3,2,4);
+plot(t, y_low_iir); title('Low-Pass IIR Filtered Signal');
+
+subplot(3,2,5);
+plot(t, y_high_iir); title('High-Pass IIR Filtered Signal');
