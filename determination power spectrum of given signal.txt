@@ -1,0 +1,23 @@
+% Determination of Power Spectrum of given signal 
+clc;
+clear all;
+close all;
+
+% Parameters
+N = 1024;                    % Number of points
+fs = 8000;                    % Sampling frequency (Hz)
+f = input('Enter the frequency [1 to 5000]: ');   % Input frequency
+
+% Time vector
+n = 0:N-1;
+x = sin(2*pi*(f/fs)*n);       % Generate sine wave
+
+% Power Spectral Density (PSD) using periodogram
+[pxx, freq] = periodogram(x, [], N, fs);    % Compute power spectrum
+
+% Plot the power spectrum
+figure;
+plot(freq, 10*log10(pxx));    % Convert power to decibels
+grid on;
+xlabel('Frequency (Hz)');
+ylabel('Magnitude (dB)');
