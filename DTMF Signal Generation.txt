@@ -1,0 +1,51 @@
+clc;
+clear all;
+close all;
+
+% Define sampling parameters
+fs = 8000;        
+t = 0:1/fs:0.25;   
+
+fr1 = 697; fr2 = 770; fr3 = 852; fr4 = 941; 
+fc1 = 1209; fc2 = 1336; fc3 = 1477; fc4 = 1633; 
+
+% Prompt the user for input
+x = input('Enter the input number (1-9, 0): ');
+
+% Generate the corresponding DTMF signal based on user input
+switch x
+    case 1
+        y = sin(2*pi*fr1*t) + sin(2*pi*fc1*t);
+    case 2
+        y = sin(2*pi*fr1*t) + sin(2*pi*fc2*t);
+    case 3
+        y = sin(2*pi*fr1*t) + sin(2*pi*fc3*t);
+    case 4
+        y = sin(2*pi*fr2*t) + sin(2*pi*fc1*t);
+    case 5
+        y = sin(2*pi*fr2*t) + sin(2*pi*fc2*t);
+    case 6
+        y = sin(2*pi*fr2*t) + sin(2*pi*fc3*t);
+    case 7
+        y = sin(2*pi*fr3*t) + sin(2*pi*fc1*t);
+    case 8
+        y = sin(2*pi*fr3*t) + sin(2*pi*fc2*t);
+    case 9
+        y = sin(2*pi*fr3*t) + sin(2*pi*fc3*t);
+    case 0
+        y = sin(2*pi*fr4*t) + sin(2*pi*fc2*t);
+    otherwise
+        error('Invalid input! Enter a number between 0 and 9.');
+end
+
+% Plot the DTMF signal
+figure;
+plot(t, y, 'b', 'LineWidth', 1.5);
+title(['DTMF Signal for Key ', num2str(x)]);
+xlabel('Time (s)');
+ylabel('Amplitude');
+grid on;
+
+% Play the sound
+disp('Playing the DTMF tone...');
+sound(y, fs);
